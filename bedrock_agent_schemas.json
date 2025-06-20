@@ -1,0 +1,173 @@
+{
+  "leave_application": [
+    {
+      "name": "apply_leave",
+      "description": "Apply for a leave",
+      "parameters": {
+        "employee_id": {
+          "description": "ID of the employee applying for leave",
+          "required": "True",
+          "type": "integer"
+        },
+        "start_date": {
+          "description": "Start date of the leave (YYYY-MM-DD)",
+          "required": "True",
+          "type": "string"
+        },
+        "end_date": {
+          "description": "End date of the leave (YYYY-MM-DD)",
+          "required": "True",
+          "type": "string"
+        },
+        "leave_type": {
+          "description": "Type of leave (e.g., Annual, Sick, Personal)",
+          "required": "True",
+          "type": "string"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "cancel_leave",
+      "description": "Cancel a leave request",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to cancel (optional if employee_id, leave_type, and start_date are provided)",
+          "required": "False",
+          "type": "integer"
+        },
+        "employee_id": {
+          "description": "ID of the employee (optional if leave_id is provided)",
+          "required": "False",
+          "type": "integer"
+        },
+        "leave_type": {
+          "description": "Type of leave (optional if leave_id is provided)",
+          "required": "False",
+          "type": "string"
+        },
+        "start_date": {
+          "description": "Start date of the leave (YYYY-MM-DD) (optional if leave_id is provided)",
+          "required": "False",
+          "type": "string"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "get_leave_balance",
+      "description": "Get leave balance for an employee",
+      "parameters": {
+        "employee_id": {
+          "description": "ID of the employee",
+          "required": "True",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "get_leave_status",
+      "description": "Get leave status for an employee or a specific leave request",
+      "parameters": {
+        "employee_id": {
+          "description": "ID of the employee (optional if leave_id is provided)",
+          "required": "False",
+          "type": "integer"
+        },
+        "leave_id": {
+          "description": "ID of the specific leave request (optional if employee_id is provided)",
+          "required": "False",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    }
+  ],
+  "leave_approval": [
+    {
+      "name": "approve_leave",
+      "description": "Approve a pending leave request",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to approve",
+          "required": "True",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "reject_leave",
+      "description": "Reject a pending leave request",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to reject",
+          "required": "True",
+          "type": "integer"
+        },
+        "reason": {
+          "description": "Reason for rejecting the leave request",
+          "required": "False",
+          "type": "string"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "get_pending_leave_requests",
+      "description": "Get a list of pending leave requests for review",
+      "parameters": {
+        "employee_id": {
+          "description": "Optional ID of the employee to filter requests by",
+          "required": "False",
+          "type": "integer"
+        },
+        "limit": {
+          "description": "Maximum number of requests to return (default: 10)",
+          "required": "False",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    }
+  ],
+  "leave_notification": [
+    {
+      "name": "notify_leave_request",
+      "description": "Send notifications about a leave request to both approver and employee",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to send notifications for",
+          "required": "True",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "get_notification_status",
+      "description": "Get notification status for a leave request",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to check notification status",
+          "required": "True",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    },
+    {
+      "name": "resend_notification",
+      "description": "Resend notifications for a leave request",
+      "parameters": {
+        "leave_id": {
+          "description": "ID of the leave request to resend notifications for",
+          "required": "True",
+          "type": "integer"
+        }
+      },
+      "requireConfirmation": "DISABLED"
+    }
+  ]
+}
